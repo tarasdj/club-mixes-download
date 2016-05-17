@@ -11,6 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',
+    [
+        'uses' =>'MainController@HomePage'
+    ]);
+
+Route::get('/genre/{genre}',
+    [
+        'uses' =>'MainController@SingleGenre'
+    ]);
+
+Route::get('/artist/{artist}',
+    [
+        'uses' =>'MainController@SingleArtist'
+    ]);
+
+Route::get('/mix/{mix_name}',
+    [
+        'uses' =>'MainController@SingleMix'
+    ]);
+
+Route::get('/test',
+    [
+        'uses' =>'MainController@Test'
+    ]);
