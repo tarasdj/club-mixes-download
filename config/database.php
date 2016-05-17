@@ -54,7 +54,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', 'globaldjmix.com'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'globaldjmix'),
             'username' => env('DB_USERNAME', 'tarasdj'),

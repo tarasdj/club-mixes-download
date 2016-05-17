@@ -119,6 +119,7 @@ class Blocks extends Model
             'blocks.duration',
             'blocks.size',
             'blocks.zippy',
+            'blocks.link',
             'blocks.alt_player',
             'artists.title as artist_name',
             'artists.id as artist_id',

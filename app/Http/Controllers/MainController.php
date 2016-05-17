@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\View;
 
 class MainController extends Controller
 {
+    public $paginate = 60;
+
     public function HomePage()
     {
         $jared = [];
         $index = 1;
         $model = new Blocks();
         $model->equal = ['blocks.block_type' => 26];
-        $mixes = $model->LoadBlocksPaginate(30);
+        $mixes = $model->LoadBlocksPaginate($this->paginate);
         foreach ($mixes as $key => $mix) {
             $jared[$index][] = $mix;
             if(($key + 1) % 3 == 0) {
@@ -25,7 +27,8 @@ class MainController extends Controller
             }
         }
         return View::make('home-page', [
-            'jared' => $jared
+            'jared' => $jared,
+            'mixmass' => $mixes
         ]);
     }
 
@@ -42,15 +45,30 @@ class MainController extends Controller
     }
 
     public function SingleGenre($genre){
-        var_dump($genre); 
+        $jared = [];
+        $index = 1;
+        $genre = str_replace('-', ' ',$genre);
+        $model = new Blocks();
+        $model->equal = ['genres.term' => $genre];
+        $mixes = $model->LoadBlocksPaginate($this->paginate);
+        foreach ($mixes as $key => $mix) {
+            $jared[$index][] = $mix;
+            if(($key + 1) % 3 == 0) {
+                $index++;
+            }
+        }
+        return View::make('single-genre-view', ['mixmass' => $mixes, 'jared' => $jared, 'genre' => ucfirst($genre)]);
     }
 
     public function SingleArtist($artist){
         var_dump($artist);
     }
 
-    public function SingleMix($mix_name){
-        var_dump($mix_name);
+    public function SingleMixView($mix_url){
+        $model = new Blocks();
+        $model->equal = ['p.page_name' => $mix_url];
+        $mix = $model->LoadBlocksPaginate($this->paginate);
+        return View::make('single-mix-view', ['mix' => $mix[0]]);
     }
 
     public function Test(){
@@ -62,6 +80,28 @@ class MainController extends Controller
         if(isset($mix)) {
             print View::make('mix-item', ['mix' => $mix]);
         }
+    }
+
+    public function MixText($mix){
+        //****** $mix Обьект блока
+        $text = 'This is the great mix %title% form legendary DJ %artist_name%.' . ' Absolutely amazing sound in genre %genre%. Download and listen! File Size: %size%, Duration: %duration%, Bitrate: %bitrate%.';
+        $text = str_replace('%artist_name%', $mix->artist_name, $text);
+        $text = str_replace('%genre%', $mix->genre_name, $text);
+        $text = str_replace('%title%', $mix->block_title, $text);
+        $text = str_replace('%size%', $mix->size, $text);
+        $text = str_replace('%duration%', $mix->duration, $text);
+        $text = str_replace('%bitrate%', $mix->quality, $text);
+        return $text;
+    }
+
+    public function GetTeaser($text){
+        $arr = explode('.', $text);
+        if(isset($arr[0])) {
+            $teaser = $arr[0];
+        } else {
+            $teaser = '';
+        }
+        return $teaser;
     }
     
 }

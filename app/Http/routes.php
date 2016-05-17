@@ -26,9 +26,9 @@ Route::get('/artist/{artist}',
         'uses' =>'MainController@SingleArtist'
     ]);
 
-Route::get('/mix/{mix_name}',
+Route::get('/mix/{mix_url}',
     [
-        'uses' =>'MainController@SingleMix'
+        'uses' =>'MainController@SingleMixView'
     ]);
 
 Route::get('/test',
