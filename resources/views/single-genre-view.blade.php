@@ -6,7 +6,7 @@
 @section('description', 'New mixes and podcasts in high quality')
 
 @section('content')
-    <div class="content">
+    <div class="content genre-page">
         <h1>{{$genre}}</h1>
         <div class="home-page-latest-mixes clearfix">
             @foreach($jared as $key => $mixes)

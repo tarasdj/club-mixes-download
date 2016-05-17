@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="col-md-10">
-
+                    <input type="text" placeholder="Search" class="form-control" id="search-article">
                 </div>
             </div>
         </div>

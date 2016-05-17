@@ -103,5 +103,21 @@ class MainController extends Controller
         }
         return $teaser;
     }
+
+    public function RelatedArticles($mix){
+        //****** $mix Обьект блока
+        $jared = [];
+        $index = 1;
+        $model = new Blocks();
+        $model->equal = ['genre' => $mix->genre_id];
+        $mixes = $model->LoadBlocksPaginate(9);
+        foreach ($mixes as $key => $mix) {
+            $jared[$index][] = $mix;
+            if(($key + 1) % 3 == 0) {
+                $index++;
+            }
+        }
+        print View::make('related-articles', ['mixmass' => $mixes, 'jared' => $jared]);
+    }
     
 }

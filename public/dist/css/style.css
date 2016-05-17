@@ -7,6 +7,10 @@ h1 {
     color: rgb(240, 240, 0);
 }
 
+h2{
+    color: #fff;
+}
+
 p{
     color: #fff;
 }
@@ -69,7 +73,7 @@ body {
 }
 
 .single-mix-title a{
-    color: rgb(240, 240, 0);
+    color: rgb(174, 45, 82);
 }
 
 .download-link-wrapper {
@@ -90,4 +94,29 @@ body {
 
 .view-more-info {
     margin-top: 5px;
+}
+
+.post-image {
+    width: 100%;
+}
+
+.site-footer .container{
+    background-color: rgba(167, 27, 57, 0.85);
+    padding: 30px;
+    color: #fff;
+}
+
+#search-article {
+    width: 50%;
+    background: #AE2D52;
+    color: #fff;
+}
+
+.article-main-text {
+    margin-top: 10px;
+}
+
+.single-mix-image img {
+    padding: 2px;
+    border: 1px solid #AE2D52;
 }
