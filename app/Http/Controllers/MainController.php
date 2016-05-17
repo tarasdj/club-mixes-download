@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Blocks;
+use App\Events\Event;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
@@ -68,7 +69,11 @@ class MainController extends Controller
         $model = new Blocks();
         $model->equal = ['p.page_name' => $mix_url];
         $mix = $model->LoadBlocksPaginate($this->paginate);
-        return View::make('single-mix-view', ['mix' => $mix[0]]);
+        if(count($mix) > 0) {
+            return View::make('single-mix-view', ['mix' => $mix[0]]);
+        } else {
+            abort('404');
+        }
     }
 
     public function Test(){
@@ -111,13 +116,16 @@ class MainController extends Controller
         $model = new Blocks();
         $model->equal = ['genre' => $mix->genre_id];
         $mixes = $model->LoadBlocksPaginate(9);
-        foreach ($mixes as $key => $mix) {
-            $jared[$index][] = $mix;
-            if(($key + 1) % 3 == 0) {
-                $index++;
+        if(count($mixes) > 0) {
+            foreach ($mixes as $key => $mix) {
+                $jared[$index][] = $mix;
+                if(($key + 1) % 3 == 0) {
+                    $index++;
+                }
             }
+            print View::make('related-articles', ['mixmass' => $mixes, 'jared' => $jared]);
         }
-        print View::make('related-articles', ['mixmass' => $mixes, 'jared' => $jared]);
+
     }
     
 }

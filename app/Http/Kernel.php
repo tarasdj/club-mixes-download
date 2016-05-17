@@ -50,4 +50,22 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
+
+    public function handle($request)
+    {
+        try
+        {
+            return parent::handle($request);
+        }
+        catch(\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e)
+        {
+            return response()->view('page-404', [], 404);
+        }
+        catch (Exception $e)
+        {
+            $this->reportException($e);
+
+            return $this->renderException($request, $e);
+        }
+    }
 }
