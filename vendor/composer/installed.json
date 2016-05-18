@@ -3217,5 +3217,56 @@
         ],
         "description": "Symfony DomCrawler Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "roumen/sitemap",
+        "version": "v2.6.3",
+        "version_normalized": "2.6.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/RoumenDamianoff/laravel-sitemap.git",
+            "reference": "5d4ccd82e94edf9ac029196ae557399a557b12bd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/RoumenDamianoff/laravel-sitemap/zipball/5d4ccd82e94edf9ac029196ae557399a557b12bd",
+            "reference": "5d4ccd82e94edf9ac029196ae557399a557b12bd",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5",
+            "paragonie/random_compat": "~1",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2016-04-27 17:02:46",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Roumen\\Sitemap": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roumen Damianoff",
+                "email": "roumen@dawebs.com",
+                "homepage": "https://roumen.it",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple sitemap generator for Laravel.",
+        "homepage": "https://roumen.it/projects/laravel-sitemap",
+        "keywords": [
+            "Sitemap",
+            "generator",
+            "laravel"
+        ]
     }
 ]
