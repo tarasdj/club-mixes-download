@@ -64,9 +64,20 @@ class MainController extends Controller
         return View::make('single-genre-view', ['mixmass' => $mixes, 'jared' => $jared, 'genre' => ucfirst($genre)]);
     }
 
-    public function SingleArtist($artist)
+    public function SingleArtist($artist_url)
     {
-        var_dump($artist);
+        $jared = [];
+        $index = 1;
+        $model = new Blocks();
+        $model->equal = ['pa.page_name' => $artist_url];
+        $mixes = $model->LoadBlocksPaginate($this->paginate);
+        foreach ($mixes as $key => $mix) {
+            $jared[$index][] = $mix;
+            if (($key + 1) % 3 == 0) {
+                $index++;
+            }
+        }
+        return View::make('single-artist-view', ['mixmass' => $mixes, 'jared' => $jared, 'artist' => ucfirst($mixes[0]->artist_name)]);
     }
 
     public function SingleMixView($mix_url)
@@ -153,6 +164,15 @@ class MainController extends Controller
         }
 
         print json_encode($json);
+    }
+
+    public function WidgetArtists(){
+        $model = new Blocks();
+        $model->equal = ['block_type' => 25];
+        $model->orderbyField = 'blocks.title';
+        $model->orderbyParam = 'asc';
+        $artists = $model->LoadBlocks();
+        print View::make('widget-artists', ['artists' => $artists]);
     }
 
 }

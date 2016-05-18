@@ -51,6 +51,7 @@
             </div>
             <div class="col-md-3">
                 <span>AdSense</span>
+                {{$MainController->WidgetArtists()}}
             </div>
         </div>
     </div>

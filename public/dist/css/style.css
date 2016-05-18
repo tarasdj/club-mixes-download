@@ -98,6 +98,8 @@ body {
 
 .post-image {
     width: 100%;
+    border: 1px solid #AE2D52;
+    padding: 6px;
 }
 
 .site-footer .container{
@@ -139,4 +141,20 @@ body {
 .autocomplete-selected {
     color: #AE2D52;
     background: #FFEF36;
+}
+
+.single-mix-title a:hover,
+.artist-links a:hover{
+    color: #D05884;
+}
+
+.artist-links {
+    list-style-type: none;
+    display: inline;
+    margin-left: 8px;
+}
+
+.artist-links a {
+    font-size: 12px;
+    color: #AE2D52;
 }
