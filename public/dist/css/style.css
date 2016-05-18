@@ -120,3 +120,23 @@ body {
     padding: 2px;
     border: 1px solid #AE2D52;
 }
+
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 12px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #AE2D52;
+    overflow: auto;
+}
+
+.autocomplete-selected {
+    color: #AE2D52;
+    background: #FFEF36;
+}

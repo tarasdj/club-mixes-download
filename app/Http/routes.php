@@ -31,6 +31,11 @@ Route::get('/mix/{mix_url}',
         'uses' =>'MainController@SingleMixView'
     ]);
 
+Route::get('/search',
+    [
+        'uses' =>'MainController@SearchArticles'
+    ]);
+
 Route::get('/test',
     [
         'uses' =>'MainController@Test'

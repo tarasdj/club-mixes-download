@@ -5,13 +5,13 @@
     <meta name="description" content="@yield('description')">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="/files/img/favicon.png" type="image/png">
-
+    <script type="text/javascript" src="/dist/libraries/JQuery-2.2.3/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="/dist/libraries/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/dist/libraries/bootstrap-3.3.6-dist/css/bootstrap.css">
 
-    <script type="text/javascript" src="/dist/libraries/JQuery-2.2.3/jquery-2.2.3.min.js"></script>
-
     <script type="text/javascript" src="/dist/js/script.js"></script>
+    <script type="text/javascript" src="/dist/libraries/jQuery-Autocomplete-master/dist/jquery.autocomplete.min.js"></script>
+    
     <link rel="stylesheet" href="/dist/css/style.css">
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -62,5 +62,18 @@
     </footer>
 
 </div>
+<script>
+    //********* Autocomplete ****************
+    $('#search-article').autocomplete({
+        serviceUrl: '/search',
+        deferRequestBy: 200,
+        onSelect: function (suggestion) {
+            window.location ='/mix/' + suggestion.block_page_url;
+        },
+        onSearchComplete: function (query, suggestions) {
+            console.log(suggestions);
+        }
+    });
+</script>
 </body>
 </html>
