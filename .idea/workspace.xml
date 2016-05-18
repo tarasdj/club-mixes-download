@@ -71,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/public/.htaccess">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="104" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -429,7 +429,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463559517883</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="hta">
+      <created>1463560873632</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1463560873632</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -480,7 +486,8 @@
     <MESSAGE value="Нові зміни. Запаролено" />
     <MESSAGE value="env gitignore" />
     <MESSAGE value="install debugbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="install debugbar" />
+    <MESSAGE value="hta" />
+    <option name="LAST_COMMIT_MESSAGE" value="hta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -867,7 +874,7 @@
     <entry file="file://$PROJECT_DIR$/public/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="104" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
