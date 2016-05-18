@@ -17,7 +17,7 @@
             <section itemscope itemtype="https://schema.org/description" class="article-main-text">
                 <p>{{$MainController->MixText($mix)}}</p>
             </section>
-
+            {{$MainController->Adsense()}}
             <section itemscope itemtype="http://schema.org/audience">
                 <div class="download-link-wrapper centered" itemscope itemtype="https://schema.org/DataDownload">
                     @if(!empty($mix->link))

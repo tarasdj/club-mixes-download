@@ -175,4 +175,12 @@ class MainController extends Controller
         print View::make('widget-artists', ['artists' => $artists]);
     }
 
+    public function Adsense(){
+        print View::make('adsense');
+    }
+
+    public function BigAdsense(){
+        print View::make('adsense-big');
+    }
+
 }
