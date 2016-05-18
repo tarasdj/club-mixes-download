@@ -49,12 +49,10 @@
                 {{$MainController->RightSideBar()}}
             </div>
             <div class="col-md-7">
+                {{$MainController->Adsense()}}
                 @yield('content')
             </div>
             <div class="col-md-3">
-                <div class="advert">
-                    {{$MainController->BigAdsense()}}
-                </div>
                 {{$MainController->WidgetArtists()}}
             </div>
         </div>
