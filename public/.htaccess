@@ -1,7 +1,7 @@
 AuthName "AuthGrant"
 AuthType Basic
 Require valid-user
-AuthUserFile "/var/www/tarasdj32/data/www/club-mixes-download.club/public/.htpasswd"
+AuthUserFile "/var/www/tarasdj32/data/www/club-mixes-download.club/club-mixes-download/public/.htpasswd"
 
 Options +FollowSymLinks
 RewriteEngine On
