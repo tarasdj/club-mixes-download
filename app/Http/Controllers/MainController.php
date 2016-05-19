@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
 class MainController extends Controller
@@ -94,7 +95,10 @@ class MainController extends Controller
 
     public function Test()
     {
-        $this->RightSideBar();
+        Mail::send('emails.welcome', array('key' => 'value'), function($message)
+        {
+            $message->to('djtiomc@gmail.com', 'Club Mixes')->subject('Привет!');
+        });
     }
 
     public function MixItem($mix = NULL)
