@@ -19,13 +19,8 @@
             </section>
             {{$MainController->Adsense()}}
             <section itemscope itemtype="http://schema.org/audience">
-                <div class="download-link-wrapper centered" itemscope itemtype="https://schema.org/DataDownload">
-                    @if(!empty($mix->link))
-                        <a href="{{urldecode($mix->link)}}" target="_blank" class="download-link">Download</a>
-                    @endif
-                </div>
-                <div class="view-more-info centered">
-                    <a href="http://globaldjmix.com/?page=single-mix-item&item={{$mix->block_page_url}}" target="_blank" class="more-info-link">More Info</a>
+                <div class="download-link-wrapper centered">
+                    <a href="http://globaldjmix.com/?page=single-mix-item&item={{$mix->block_page_url}}" target="_blank" class="more-info-link">Download</a>
                 </div>
             </section>
 

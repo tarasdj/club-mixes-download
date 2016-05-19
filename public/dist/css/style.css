@@ -62,6 +62,7 @@ body {
 
 .mix-single-item {
     margin-bottom: 23px;
+    padding: 0px;
 }
 
 .single-mix-item-wrapper {
@@ -77,7 +78,7 @@ body {
 }
 
 .download-link-wrapper {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .download-link {
@@ -112,6 +113,7 @@ body {
     width: 50%;
     background: #AE2D52;
     color: #fff;
+    margin-left: 6px;
 }
 
 .article-main-text {
@@ -160,14 +162,21 @@ body {
 }
 
 .main-wrapper .col-md-7{
-    margin-left: 0px;
-    padding-left: 0px;
+
 }
 
 h1 {
-    margin-left: 15px;
+
 }
 
 .article-page {
-    margin-left: 15px;
+
+}
+
+.widget-artists {
+    margin-top: 65px;
+}
+
+.top-site .col-md-10 {
+    padding: 0px;
 }

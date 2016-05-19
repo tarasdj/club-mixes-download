@@ -159,6 +159,7 @@ class MainController extends Controller
         $search = '%' . $search . '%';
         $model = new Blocks();
         $model->like = ['p.page_title' => $search];
+        $model->equal = ['block_type' => 26];
         $articles = $model->LoadBlocks();
 
         $json = new \stdClass;
