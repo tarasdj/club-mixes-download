@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Blocks;
 use App\Events\Event;
+use App\HistorySite;
 use Illuminate\Auth\Access\Response;
-use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\View;
 
 class MainController extends Controller
 {
     public $paginate = 60;
 
-    public function HomePage()
+    public function HomePage(Request $request)
     {
         $jared = [];
         $index = 1;
@@ -29,6 +30,16 @@ class MainController extends Controller
                 $index++;
             }
         }
+
+        $history = new HistorySite();
+        $history->ip = Request::server('REMOTE_ADDR');
+        $history->hdate = date('Y-m-d H:i:s', time());
+        $history->msg = 'Home Page';
+        $history->msg_type = 1359;
+        $history->referer = Request::server('HTTP_REFERER');
+        $history->user_agent = Request::server('HTTP_USER_AGENT');
+        $history->save();
+
         return View::make('home-page', [
             'jared' => $jared,
             'mixmass' => $mixes
@@ -62,7 +73,22 @@ class MainController extends Controller
                 $index++;
             }
         }
-        return View::make('single-genre-view', ['mixmass' => $mixes, 'jared' => $jared, 'genre' => ucfirst($genre)]);
+
+        $history = new HistorySite();
+        $history->ip = Request::server('REMOTE_ADDR');
+        $history->hdate = date('Y-m-d H:i:s', time());
+        $history->msg = $genre;
+        $history->msg_type = 1359;
+        $history->referer = Request::server('HTTP_REFERER');
+        $history->user_agent = Request::server('HTTP_USER_AGENT');
+        $history->save();
+
+        if(count($mixes) > 0) {
+            return View::make('single-genre-view', ['mixmass' => $mixes, 'jared' => $jared, 'genre' => ucfirst($genre)]);
+        } else {
+            abort('404');
+        }
+
     }
 
     public function SingleArtist($artist_url)
@@ -78,7 +104,22 @@ class MainController extends Controller
                 $index++;
             }
         }
-        return View::make('single-artist-view', ['mixmass' => $mixes, 'jared' => $jared, 'artist' => ucfirst($mixes[0]->artist_name)]);
+
+        $history = new HistorySite();
+        $history->ip = Request::server('REMOTE_ADDR');
+        $history->hdate = date('Y-m-d H:i:s', time());
+        $history->msg = $artist_url;
+        $history->msg_type = 1359;
+        $history->referer = Request::server('HTTP_REFERER');
+        $history->user_agent = Request::server('HTTP_USER_AGENT');
+        $history->save();
+
+        if(count($mixes) > 0) {
+            return View::make('single-artist-view', ['mixmass' => $mixes, 'jared' => $jared, 'artist' => ucfirst($mixes[0]->artist_name)]);
+        } else {
+            abort('404');
+        }
+
     }
 
     public function SingleMixView($mix_url)
@@ -86,6 +127,16 @@ class MainController extends Controller
         $model = new Blocks();
         $model->equal = ['p.page_name' => $mix_url];
         $mix = $model->LoadBlocksPaginate($this->paginate);
+
+        $history = new HistorySite();
+        $history->ip = Request::server('REMOTE_ADDR');
+        $history->hdate = date('Y-m-d H:i:s', time());
+        $history->msg = $mix_url;
+        $history->msg_type = 1359;
+        $history->referer = Request::server('HTTP_REFERER');
+        $history->user_agent = Request::server('HTTP_USER_AGENT');
+        $history->save();
+
         if (count($mix) > 0) {
             return View::make('single-mix-view', ['mix' => $mix[0]]);
         } else {
@@ -167,6 +218,15 @@ class MainController extends Controller
             $article->value = $article->artist_name . ' - ' . $article->block_title;
             $json->suggestions[] = $article;
         }
+
+        $history = new HistorySite();
+        $history->ip = Request::server('REMOTE_ADDR');
+        $history->hdate = date('Y-m-d H:i:s', time());
+        $history->msg = 'Search: ' . $search;
+        $history->msg_type = 1359;
+        $history->referer = Request::server('HTTP_REFERER');
+        $history->user_agent = Request::server('HTTP_USER_AGENT');
+        $history->save();
 
         print json_encode($json);
     }
